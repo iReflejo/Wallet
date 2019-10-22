@@ -13,6 +13,5 @@ class OfferDetailsActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this, R.layout.activity_offer_details)
-        binding.viewModel = intent.extras!!["offer"] as Offer
     }
 }

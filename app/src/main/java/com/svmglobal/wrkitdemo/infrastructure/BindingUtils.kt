@@ -17,8 +17,10 @@ fun setFloat(view: TextView, value: Float) {
 
 @BindingAdapter("bind:imageUrl")
 fun loadImage(view: ImageView, imageUrl: String) {
-    Picasso
-        .get()
-        .load(imageUrl)
-        .into(view)
+    if(!imageUrl.isNullOrEmpty()) {
+        Picasso
+            .get()
+            .load(imageUrl)
+            .into(view)
+    }
 }
