@@ -1,13 +1,13 @@
 package com.svmglobal.wrkitdemo.ui.offers
 
-import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.svmglobal.wrkitdemo.models.Offer
 
 class OffersViewModel : ViewModel() {
+    val selected = MutableLiveData<Offer>()
 
-    private val _text = MutableLiveData<String>().apply {
-        value = "This is the list of offers"
+    fun select(offer: Offer) {
+        selected.value = offer
     }
-    val text: LiveData<String> = _text
 }

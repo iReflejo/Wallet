@@ -7,8 +7,6 @@
         android:id="@+id/offers_view"
         android:layout_height="match_parent"
         android:layout_width="match_parent"
-        android:paddingTop="20dp"
-        android:paddingStart="20dp"
         android:scrollbars="vertical">
 
     </androidx.recyclerview.widget.RecyclerView>

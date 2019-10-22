@@ -1,50 +1,47 @@
 package com.svmglobal.wrkitdemo.ui.offers
 
+import android.content.Intent
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
-import android.widget.LinearLayout
 import androidx.recyclerview.widget.RecyclerView
-import com.squareup.picasso.Picasso
-import com.svmglobal.wrkitdemo.R
+import com.svmglobal.wrkitdemo.databinding.OfferRowItemBinding
+import com.svmglobal.wrkitdemo.models.Offer
 
-class OffersAdapter (private val dataset: Array<String>) :
+class OffersAdapter(private val dataset: Array<Offer>) :
     RecyclerView.Adapter<OffersAdapter.OffersViewHolder>() {
 
-    class OffersViewHolder(val linearLayout: LinearLayout) : RecyclerView.ViewHolder(linearLayout) {
-        var imageSource = ""
+    class OffersViewHolder(private val binding: OfferRowItemBinding) : RecyclerView.ViewHolder(binding.root),
+        View.OnClickListener {
 
-//        fun updateWithUrl(url: String) {
-//            imageSource = url
-//            Picasso.get().load(url).into(imageView)
-//        }
+        init {
+            binding.root.setOnClickListener(this)
+        }
 
-//        fun bind(item: String){
-//            imageView.setOnClickListener(this)
-//        }
+        fun setOffer(offer: Offer){
+            binding.viewModel.select(offer)
+        }
 
-//        override fun onClick(view: View) {
-//            val intent = Intent(view.context, CardDetailsActivity::class.java)
-//            intent.putExtra("product", imageSource)
-//            view.context.startActivity(intent)
-//        }
+        override fun onClick(view: View) {
+            val intent = Intent(view.context, OfferDetailsActivity::class.java)
+            view.context.startActivity(intent)
+        }
     }
 
     // Create new views (invoked by the layout manager)
-    override fun onCreateViewHolder(parent: ViewGroup,
-                                    viewType: Int): OffersViewHolder {
-        // create a new view
-        val imageView = LayoutInflater.from(parent.context)
-            .inflate(R.layout.offer_row_item, parent, false) as LinearLayout
-
-        return OffersViewHolder(imageView)
+    override fun onCreateViewHolder(
+        parent: ViewGroup,
+        viewType: Int
+    ): OffersViewHolder {
+        val layoutInflater = LayoutInflater.from(parent.context)
+        val itemBinding = OfferRowItemBinding.inflate(layoutInflater, parent, false)
+        return OffersViewHolder(itemBinding)
     }
 
     // Replace the contents of a view (invoked by the layout manager)
     override fun onBindViewHolder(holder: OffersViewHolder, position: Int) {
-        val imageUrl = dataset[position]
-//        holder.updateWithUrl(imageUrl)
-//        holder.bind(dataset[position])
+        val offer = dataset[position]
+        holder.setOffer(offer)
     }
 
     override fun getItemCount() = dataset.size

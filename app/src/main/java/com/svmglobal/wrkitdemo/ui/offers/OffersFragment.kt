@@ -11,6 +11,7 @@ import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.svmglobal.wrkitdemo.R
+import com.svmglobal.wrkitdemo.services.InternalApiClient
 
 class OffersFragment : Fragment() {
 
@@ -26,7 +27,7 @@ class OffersFragment : Fragment() {
         val root = inflater.inflate(R.layout.fragment_offers, container, false)
 
         val viewManager = LinearLayoutManager(this.context)
-        val viewAdapter = OffersAdapter(arrayOf("Test 1", "Test 2", "Test 3"))
+        val viewAdapter = OffersAdapter(InternalApiClient.getAllImages())
 
         root.findViewById<RecyclerView>(R.id.offers_view).apply {
             setHasFixedSize(true)
