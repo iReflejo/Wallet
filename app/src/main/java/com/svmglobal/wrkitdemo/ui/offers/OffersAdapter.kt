@@ -1,16 +1,16 @@
 package com.svmglobal.wrkitdemo.ui.offers
 
-import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
+import androidx.fragment.app.FragmentActivity
 import androidx.recyclerview.widget.RecyclerView
 import com.svmglobal.wrkitdemo.R
 import com.svmglobal.wrkitdemo.databinding.OfferRowItemBinding
 import com.svmglobal.wrkitdemo.models.Offer
 
-class OffersAdapter(private val dataset: Array<Offer>) :
+class OffersAdapter(private val dataset: Array<Offer>, private val viewModel: OffersViewModel) :
     RecyclerView.Adapter<OffersAdapter.OffersViewHolder>() {
 
     inner class OffersViewHolder(private val binding: OfferRowItemBinding) :
@@ -26,8 +26,14 @@ class OffersAdapter(private val dataset: Array<Offer>) :
         }
 
         override fun onClick(view: View) {
-            val intent = Intent(view.context, OfferDetailsActivity::class.java)
-            view.context.startActivity(intent)
+            val newFragment = OfferDetailsFragment()
+            val transaction =
+                (view.context as FragmentActivity).supportFragmentManager.beginTransaction().apply {
+                    replace(R.id.container, newFragment)
+                    addToBackStack(null)
+                }
+            viewModel.select(binding.viewModel!!)
+            transaction.commit()
         }
     }
 
