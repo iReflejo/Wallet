@@ -4,22 +4,25 @@ import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.RecyclerView
+import com.svmglobal.wrkitdemo.R
 import com.svmglobal.wrkitdemo.databinding.OfferRowItemBinding
 import com.svmglobal.wrkitdemo.models.Offer
 
 class OffersAdapter(private val dataset: Array<Offer>) :
     RecyclerView.Adapter<OffersAdapter.OffersViewHolder>() {
 
-    class OffersViewHolder(private val binding: OfferRowItemBinding) : RecyclerView.ViewHolder(binding.root),
+    inner class OffersViewHolder(private val binding: OfferRowItemBinding) :
+        RecyclerView.ViewHolder(binding.root),
         View.OnClickListener {
 
         init {
             binding.root.setOnClickListener(this)
         }
 
-        fun setOffer(offer: Offer){
-            binding.viewModel.select(offer)
+        fun setOffer(offer: Offer) {
+            binding.viewModel = offer
         }
 
         override fun onClick(view: View) {
@@ -33,8 +36,12 @@ class OffersAdapter(private val dataset: Array<Offer>) :
         parent: ViewGroup,
         viewType: Int
     ): OffersViewHolder {
-        val layoutInflater = LayoutInflater.from(parent.context)
-        val itemBinding = OfferRowItemBinding.inflate(layoutInflater, parent, false)
+        val itemBinding = DataBindingUtil.inflate<OfferRowItemBinding>(
+            LayoutInflater.from(parent.context),
+            R.layout.offer_row_item,
+            parent,
+            false
+        )
         return OffersViewHolder(itemBinding)
     }
 
