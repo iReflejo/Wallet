@@ -2,6 +2,7 @@ package com.svmglobal.wrkitdemo.ui.offers
 
 import androidx.lifecycle.ViewModel
 import com.svmglobal.wrkitdemo.models.Offer
+import com.svmglobal.wrkitdemo.models.PaymentMethod
 
 
 data class OfferDetailsViewModel(
@@ -12,7 +13,8 @@ data class OfferDetailsViewModel(
     val promotionLongDescription: String,
     val distance: Float,
     val instoreUse: Boolean,
-    val onlineUse: Boolean
+    val onlineUse: Boolean,
+    val paymentMethods: Array<PaymentMethod>
 ) : ViewModel() {
 
     val availability: String
@@ -38,6 +40,7 @@ data class OfferDetailsViewModel(
         offer.promotionLongDescription,
         offer.distance,
         offer.instoreUse,
-        offer.onlineUse
+        offer.onlineUse,
+        offer.paymentMethods
     )
 }

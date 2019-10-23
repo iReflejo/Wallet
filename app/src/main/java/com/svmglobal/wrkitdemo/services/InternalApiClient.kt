@@ -1,9 +1,18 @@
 package com.svmglobal.wrkitdemo.services
 
 import com.svmglobal.wrkitdemo.models.Offer
+import com.svmglobal.wrkitdemo.models.PaymentMethod
 
 object InternalApiClient {
     fun getAllImages(): Array<Offer> {
+
+        val paymentMethods = arrayOf(
+            PaymentMethod(
+                "All",
+                "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQB_a30TT37soT-2Z6Sl3uy4Bk22vrpfhpdaOpJ212kq9A9U-fuYQ&s"
+            )
+        )
+
         return arrayOf(
             Offer(
                 "Tesco",
@@ -13,7 +22,8 @@ object InternalApiClient {
                 "Save 3% on all in-store purchases when you shop between now and christmas",
                 0.5f,
                 instoreUse = true,
-                onlineUse = true
+                onlineUse = true,
+                paymentMethods = paymentMethods
             ),
             Offer(
                 "Starbucks",
@@ -23,7 +33,8 @@ object InternalApiClient {
                 "",
                 0.8f,
                 instoreUse = true,
-                onlineUse = false
+                onlineUse = false,
+                paymentMethods = paymentMethods
             ),
             Offer(
                 "McDonalds",
@@ -33,7 +44,8 @@ object InternalApiClient {
                 "",
                 1.2f,
                 instoreUse = true,
-                onlineUse = false
+                onlineUse = false,
+                paymentMethods = paymentMethods
             )
         )
     }

@@ -2,7 +2,6 @@ package com.svmglobal.wrkitdemo.models
 
 import androidx.lifecycle.ViewModel
 
-
 data class Offer(
     val brand: String,
     val brandImage: String,
