@@ -1,7 +1,6 @@
 package com.svmglobal.wrkitdemo.models
 
 import androidx.lifecycle.ViewModel
-import java.io.Serializable
 
 
 data class Offer(
@@ -12,5 +11,7 @@ data class Offer(
     val promotionLongDescription: String,
     val distance: Float,
     val instoreUse: Boolean,
-    val onlineUse: Boolean
-) : Serializable, ViewModel()
+    val onlineUse: Boolean,
+    val paymentMethods: Array<PaymentMethod>
+) : ViewModel()
+

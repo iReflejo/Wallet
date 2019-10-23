@@ -24,3 +24,12 @@ fun loadImage(view: ImageView, imageUrl: String) {
             .into(view)
     }
 }
+
+@BindingAdapter("bind:distance")
+fun formatString(view: TextView, distance: Float) {
+    if ((distance).isNaN()) {
+        view.text = ""
+        return
+    }
+    view.text = "$distance km"
+}

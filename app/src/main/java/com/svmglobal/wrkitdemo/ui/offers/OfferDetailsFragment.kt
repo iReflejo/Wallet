@@ -1,28 +1,36 @@
 package com.svmglobal.wrkitdemo.ui.offers
 
-import androidx.lifecycle.ViewModelProviders
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-
+import androidx.databinding.DataBindingUtil
+import androidx.fragment.app.Fragment
+import androidx.lifecycle.ViewModelProviders
 import com.svmglobal.wrkitdemo.R
+import com.svmglobal.wrkitdemo.databinding.OfferDetailsFragmentBinding
 
 class OfferDetailsFragment : Fragment() {
     private lateinit var viewModel: OffersViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        viewModel = activity?.run {
-            ViewModelProviders.of(this)[OffersViewModel::class.java]
-        } ?: throw Exception("Invalid Activity")
+        viewModel =
+            ViewModelProviders.of(activity!!)
+                .get(OffersViewModel::class.java)
     }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return inflater.inflate(R.layout.offer_details_fragment, container, false)
+        val binding = DataBindingUtil.inflate<OfferDetailsFragmentBinding>(
+            inflater,
+            R.layout.offer_details_fragment,
+            container,
+            false
+        )
+        binding.viewModel = OfferDetailsViewModel(viewModel.selected.value!!)
+        return binding.root
     }
 }

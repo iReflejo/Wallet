@@ -10,7 +10,7 @@ object InternalApiClient {
                 "https://upload.wikimedia.org/wikipedia/en/thumb/b/b0/Tesco_Logo.svg/800px-Tesco_Logo.svg.png",
                 "https://mobilemarketingmagazine.com/wp-content/uploads/Tesco_store_again.jpg",
                 "Save 3% on all in-store purchases",
-                "",
+                "Save 3% on all in-store purchases when you shop between now and christmas",
                 0.5f,
                 instoreUse = true,
                 onlineUse = true
