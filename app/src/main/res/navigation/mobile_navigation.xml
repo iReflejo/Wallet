@@ -13,9 +13,9 @@
 
     <fragment
         android:id="@+id/navigation_cards"
-        android:name="com.svmglobal.wrkitdemo.ui.dashboard.DashboardFragment"
+        android:name="com.svmglobal.wrkitdemo.ui.mycards.MyCardsFragment"
         android:label="@string/title_cards"
-        tools:layout="@layout/fragment_dashboard" />
+        tools:layout="@layout/fragment_my_cards" />
 
     <fragment
         android:id="@+id/navigation_account"

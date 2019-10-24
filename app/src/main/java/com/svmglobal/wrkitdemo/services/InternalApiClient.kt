@@ -1,10 +1,11 @@
 package com.svmglobal.wrkitdemo.services
 
+import com.svmglobal.wrkitdemo.models.Card
 import com.svmglobal.wrkitdemo.models.Offer
 import com.svmglobal.wrkitdemo.models.PaymentMethod
 
 object InternalApiClient {
-    fun getAllImages(): Array<Offer> {
+    fun getAllOffers(): Array<Offer> {
 
         val paymentMethods = arrayOf(
             PaymentMethod(
@@ -46,6 +47,29 @@ object InternalApiClient {
                 instoreUse = true,
                 onlineUse = false,
                 paymentMethods = paymentMethods
+            )
+        )
+    }
+
+    fun getAllCards(): Array<Card> {
+        return arrayOf(
+            Card(
+                "VISA Credit",
+                "https://svmvirtodemo.blob.core.windows.net/wrkit-demo/visa.png",
+                "5368",
+                "05/21"
+            ),
+            Card(
+                "Mastercard Credit",
+                "https://svmvirtodemo.blob.core.windows.net/wrkit-demo/mastercard.png",
+                "3522",
+                "02/22"
+            ),
+            Card(
+                "VISA Debit",
+                "https://svmvirtodemo.blob.core.windows.net/wrkit-demo/visa.png",
+                "4257",
+                "08/20"
             )
         )
     }

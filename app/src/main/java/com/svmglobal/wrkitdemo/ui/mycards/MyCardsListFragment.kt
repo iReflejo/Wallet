@@ -1,4 +1,4 @@
-package com.svmglobal.wrkitdemo.ui.offers
+package com.svmglobal.wrkitdemo.ui.mycards
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -11,8 +11,8 @@ import androidx.recyclerview.widget.RecyclerView
 import com.svmglobal.wrkitdemo.R
 import com.svmglobal.wrkitdemo.services.InternalApiClient
 
-class OffersListFragment : Fragment() {
-    private lateinit var viewModel: OffersViewModel
+class MyCardsListFragment : Fragment() {
+    private lateinit var viewModel: MyCardsViewModel
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -21,17 +21,17 @@ class OffersListFragment : Fragment() {
     ): View? {
         viewModel =
             ViewModelProviders.of(activity!!)
-                .get(OffersViewModel::class.java)
-        val root = inflater.inflate(R.layout.fragment_offer_list, container, false)
+                .get(MyCardsViewModel::class.java)
+        val root = inflater.inflate(R.layout.fragment_my_card_list, container, false)
 
         val viewManager = LinearLayoutManager(this.context)
-        val viewAdapter = OffersAdapter(
-            InternalApiClient.getAllOffers(),
+        val viewAdapter = MyCardsAdapter(
+            InternalApiClient.getAllCards(),
             viewModel,
             fragmentManager!!
         )
 
-        root.findViewById<RecyclerView>(R.id.offers_view)?.apply {
+        root.findViewById<RecyclerView>(R.id.my_cards_view)?.apply {
             setHasFixedSize(true)
             layoutManager = viewManager
             adapter = viewAdapter
