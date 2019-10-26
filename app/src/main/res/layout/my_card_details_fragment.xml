@@ -6,7 +6,7 @@
 
         <variable
             name="viewModel"
-            type="com.svmglobal.wrkitdemo.ui.offers.OfferDetailsViewModel" />
+            type="com.svmglobal.wrkitdemo.ui.mycards.MyCardDetailsViewModel" />
     </data>
 
     <LinearLayout
@@ -14,92 +14,63 @@
         android:layout_height="match_parent"
         android:orientation="vertical">
 
-        <ImageView
-            android:id="@+id/offer_brand_banner"
+        <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:adjustViewBounds="true"
-            android:scaleType="centerCrop"
-            app:imageUrl="@{viewModel.brandBannerImage}" />
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:padding="20dp">
+            android:layout_gravity="center_horizontal">
 
             <LinearLayout
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:layout_weight="2">
-
-                <ImageView
-                    android:id="@+id/offer_brand_image"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:paddingStart="10dp"
-                    android:paddingEnd="10dp"
-                    android:scaleType="fitCenter"
-                    app:imageUrl="@{viewModel.brandImage}" />
+                android:id="@+id/card_container"
+                android:layout_width="300dp"
+                android:layout_height="160dp"
+                android:layout_centerInParent="true"
+                android:layout_margin="10dp"
+                android:background="@drawable/rounded_plain"
+                android:orientation="vertical">
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textStyle="bold"
+                    android:paddingTop="40dp"
+                    android:paddingBottom="10dp"
+                    android:text="@{viewModel.maskedCardNumber}"
                     android:textAlignment="center"
-                    android:text="@{viewModel.availability}" />
+                    android:textSize="24sp" />
+
+                <RelativeLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/expiry_label"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:text="Expiry: " />
+
+                    <TextView
+                        android:id="@+id/expiry_date"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_toEndOf="@+id/expiry_label"
+                        android:text="@{viewModel.expiryDate}" />
+                </RelativeLayout>
+
+                <ImageView
+                    android:layout_width="50dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="end"
+                    android:scaleType="fitCenter"
+                    app:imageUrl="@{viewModel.brandImage}" />
             </LinearLayout>
+        </RelativeLayout>
 
-            <TextView
-                android:id="@+id/offer_brand_promotion"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="3"
-                android:padding="5dp"
-                android:text="@{viewModel.promotionShortDescription}"
-                android:textStyle="bold" />
-
-            <TextView
-                android:id="@+id/offer_distance"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:padding="5dp"
-                android:textStyle="bold"
-                app:distance="@{viewModel.distance}" />
-        </LinearLayout>
-
-        <TextView
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/transaction_history"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@{viewModel.promotionLongDescription}"
-            android:textAlignment="center"
-            android:textSize="20sp"
-            android:paddingStart="50dp"
-            android:paddingEnd="50dp" />
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="View terms and conditions"
-            android:textSize="12sp"
-            android:textAlignment="center"
-            android:paddingTop="15dp" />
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:padding="20dp">
-
-            <ImageView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:paddingStart="10dp"
-                android:paddingEnd="10dp"
-                android:scaleType="fitCenter"
-                app:imageUrl="@{viewModel.paymentMethods[0].logoUrl}" />
-        </LinearLayout>
+            android:layout_height="match_parent"
+            android:scrollbars="vertical" />
     </LinearLayout>
 </layout>

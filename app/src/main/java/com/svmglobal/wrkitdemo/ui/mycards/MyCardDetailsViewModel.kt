@@ -1,46 +1,24 @@
-package com.svmglobal.wrkitdemo.ui.offers
+package com.svmglobal.wrkitdemo.ui.mycards
 
 import androidx.lifecycle.ViewModel
-import com.svmglobal.wrkitdemo.models.Offer
-import com.svmglobal.wrkitdemo.models.PaymentMethod
+import com.svmglobal.wrkitdemo.models.Card
+import com.svmglobal.wrkitdemo.models.Transaction
 
 
-data class OfferDetailsViewModel(
-    val brand: String,
+data class MyCardDetailsViewModel(
+    val cardBrand: String,
     val brandImage: String,
-    val brandBannerImage: String,
-    val promotionShortDescription: String,
-    val promotionLongDescription: String,
-    val distance: Float,
-    val instoreUse: Boolean,
-    val onlineUse: Boolean,
-    val paymentMethods: Array<PaymentMethod>
+    val lastFourDigits: String,
+    val expiryDate: String,
+    val transactions: Array<Transaction>
 ) : ViewModel() {
+    val maskedCardNumber = "xxxx xxxx xxxx ${lastFourDigits}"
 
-    val availability: String
-        get() {
-            var s = if (onlineUse) "Online" else ""
-
-            if (!instoreUse) {
-                return s
-            }
-
-            if (s.isNotEmpty()) {
-                s += " / "
-            }
-            s += "In Store"
-            return s
-        }
-
-    constructor(offer: Offer) : this(
-        offer.brand,
-        offer.brandImage,
-        offer.brandBannerImage,
-        offer.promotionShortDescription,
-        offer.promotionLongDescription,
-        offer.distance,
-        offer.instoreUse,
-        offer.onlineUse,
-        offer.paymentMethods
+    constructor(card: Card) : this(
+        card.cardBrand,
+        card.brandImage,
+        card.lastFourDigits,
+        card.expiryDate,
+        card.transactions
     )
 }

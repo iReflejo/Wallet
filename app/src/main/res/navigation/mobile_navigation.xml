@@ -9,17 +9,36 @@
         android:id="@+id/navigation_offers"
         android:name="com.svmglobal.wrkitdemo.ui.offers.OffersFragment"
         android:label="@string/title_offers"
-        tools:layout="@layout/fragment_offers" />
+        tools:layout="@layout/fragment_offers">
+        <action
+            android:id="@+id/action_navigation_offers_to_offerDetailsFragment"
+            app:destination="@id/offerDetailsFragment"
+            app:popUpTo="@id/navigation_offers" />
+    </fragment>
 
     <fragment
         android:id="@+id/navigation_cards"
         android:name="com.svmglobal.wrkitdemo.ui.mycards.MyCardsFragment"
         android:label="@string/title_cards"
-        tools:layout="@layout/fragment_my_cards" />
+        tools:layout="@layout/fragment_my_cards">
+        <action
+            android:id="@+id/action_navigation_cards_to_myCardDetailsFragment"
+            app:destination="@id/myCardDetailsFragment"
+            app:popUpTo="@id/navigation_cards"
+            app:popUpToInclusive="false" />
+    </fragment>
 
     <fragment
         android:id="@+id/navigation_account"
         android:name="com.svmglobal.wrkitdemo.ui.notifications.NotificationsFragment"
         android:label="@string/title_account"
         tools:layout="@layout/fragment_notifications" />
+    <fragment
+        android:id="@+id/offerDetailsFragment"
+        android:name="com.svmglobal.wrkitdemo.ui.offers.OfferDetailsFragment"
+        android:label="OfferDetailsFragment" />
+    <fragment
+        android:id="@+id/myCardDetailsFragment"
+        android:name="com.svmglobal.wrkitdemo.ui.mycards.MyCardDetailsFragment"
+        android:label="MyCardDetailsFragment" />
 </navigation>

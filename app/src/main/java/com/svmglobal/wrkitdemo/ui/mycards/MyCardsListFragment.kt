@@ -6,8 +6,10 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProviders
+import androidx.navigation.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.google.android.material.chip.Chip
 import com.svmglobal.wrkitdemo.R
 import com.svmglobal.wrkitdemo.services.InternalApiClient
 
@@ -27,8 +29,7 @@ class MyCardsListFragment : Fragment() {
         val viewManager = LinearLayoutManager(this.context)
         val viewAdapter = MyCardsAdapter(
             InternalApiClient.getAllCards(),
-            viewModel,
-            fragmentManager!!
+            viewModel
         )
 
         root.findViewById<RecyclerView>(R.id.my_cards_view)?.apply {
@@ -37,6 +38,14 @@ class MyCardsListFragment : Fragment() {
             adapter = viewAdapter
         }
 
+        val chip = root.findViewById<Chip>(R.id.add_new_card)
+        chip.setOnClickListener {
+            val action = MyCardsFragmentDirections.actionNavigationCardsToMyCardDetailsFragment()
+            it.findNavController().navigate(action)
+        }
+
         return root
     }
+
+
 }

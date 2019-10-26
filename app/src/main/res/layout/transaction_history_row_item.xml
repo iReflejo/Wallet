@@ -8,71 +8,40 @@
 
         <variable
             name="viewModel"
-            type="com.svmglobal.wrkitdemo.models.Card" />
+            type="com.svmglobal.wrkitdemo.models.Transaction" />
     </data>
 
-    <RelativeLayout
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_gravity="center">
-
+        android:orientation="horizontal"
+        android:padding="10dp">
         <LinearLayout
-            android:layout_centerInParent="true"
-            android:id="@+id/card_container"
-            android:layout_width="300dp"
-            android:layout_height="160dp"
-            android:layout_margin="10dp"
-            android:background="@drawable/rounded_plain"
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
             android:orientation="vertical">
 
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:paddingBottom="10dp">
-                <TextView
-                    android:paddingTop="40dp"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textAlignment="center"
-                    android:textSize="24sp"
-                    android:text="xxxx xxxx xxxx " />
-
-                <TextView
-                    android:paddingTop="40dp"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textAlignment="center"
-                    android:textSize="24sp"
-                    android:text="@{viewModel.lastFourDigits}" />
-            </LinearLayout>
-
-
-            <RelativeLayout
+            <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal">
-                <TextView
-                    android:layout_centerVertical="true"
-                    android:id="@+id/expiry_label"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Expiry: " />
-                <TextView
-                    android:layout_centerVertical="true"
-                    android:id="@+id/expiry_date"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_toRightOf="@+id/expiry_label"
-                    android:text="@{viewModel.expiryDate}" />
-            </RelativeLayout>
-            <ImageView
-                android:layout_width="50dp"
+                android:text="@{viewModel.storeName}"
+                android:textStyle="bold"
+                android:textSize="15sp" />
+
+            <TextView
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:scaleType="fitCenter"
-                android:layout_gravity="right"
-                app:imageUrl="@{viewModel.brandImage}"/>
+                android:text="@{viewModel.transactionDate}"
+                android:textSize="12sp" />
         </LinearLayout>
-    </RelativeLayout>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textStyle="bold"
+            android:textSize="15sp"
+            app:currency="@{viewModel.amount}" />
+    </LinearLayout>
 
 </layout>

@@ -1,37 +1,22 @@
 package com.svmglobal.wrkitdemo.ui.mycards
 
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
-import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.svmglobal.wrkitdemo.R
-import com.svmglobal.wrkitdemo.databinding.MyCardRowItemBinding
-import com.svmglobal.wrkitdemo.models.Card
+import com.svmglobal.wrkitdemo.databinding.TransactionHistoryRowItemBinding
+import com.svmglobal.wrkitdemo.models.Transaction
 
-class MyCardsAdapter(
-    private val dataset: Array<Card>,
-    private val viewModel: MyCardsViewModel
+class TransactionHistoryAdapter(
+    private val dataset: Array<Transaction>
 ) :
-    RecyclerView.Adapter<MyCardsAdapter.MyCardsViewHolder>() {
+    RecyclerView.Adapter<TransactionHistoryAdapter.TransactionHistoryViewHolder>() {
 
-    inner class MyCardsViewHolder(private val binding: MyCardRowItemBinding) :
-        RecyclerView.ViewHolder(binding.root),
-        View.OnClickListener {
-
-        init {
-            binding.root.setOnClickListener(this)
-        }
-
-        fun setCard(card: Card) {
-            binding.viewModel = card
-        }
-
-        override fun onClick(view: View) {
-            viewModel.select(binding.viewModel!!)
-            val action = MyCardsFragmentDirections.actionNavigationCardsToMyCardDetailsFragment()
-            view.findNavController().navigate(action)
+    inner class TransactionHistoryViewHolder(private val binding: TransactionHistoryRowItemBinding) :
+        RecyclerView.ViewHolder(binding.root) {
+        fun setTransaction(transaction: Transaction) {
+            binding.viewModel = transaction
         }
     }
 
@@ -39,20 +24,20 @@ class MyCardsAdapter(
     override fun onCreateViewHolder(
         parent: ViewGroup,
         viewType: Int
-    ): MyCardsViewHolder {
-        val itemBinding = DataBindingUtil.inflate<MyCardRowItemBinding>(
+    ): TransactionHistoryViewHolder {
+        val itemBinding = DataBindingUtil.inflate<TransactionHistoryRowItemBinding>(
             LayoutInflater.from(parent.context),
-            R.layout.my_card_row_item,
+            R.layout.transaction_history_row_item,
             parent,
             false
         )
-        return MyCardsViewHolder(itemBinding)
+        return TransactionHistoryViewHolder(itemBinding)
     }
 
     // Replace the contents of a view (invoked by the layout manager)
-    override fun onBindViewHolder(holder: MyCardsViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: TransactionHistoryViewHolder, position: Int) {
         val card = dataset[position]
-        holder.setCard(card)
+        holder.setTransaction(card)
     }
 
     override fun getItemCount() = dataset.size

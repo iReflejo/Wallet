@@ -3,16 +3,21 @@ package com.svmglobal.wrkitdemo.services
 import com.svmglobal.wrkitdemo.models.Card
 import com.svmglobal.wrkitdemo.models.Offer
 import com.svmglobal.wrkitdemo.models.PaymentMethod
+import com.svmglobal.wrkitdemo.models.Transaction
 
 object InternalApiClient {
-    fun getAllOffers(): Array<Offer> {
+    private val visa =
+        PaymentMethod("VISA", "https://svmvirtodemo.blob.core.windows.net/wrkit-demo/visa.png")
+    private val mastercard = PaymentMethod(
+        "Mastercard",
+        "https://svmvirtodemo.blob.core.windows.net/wrkit-demo/mastercard.png"
+    )
+    private val googlePay = PaymentMethod(
+        "Google Pay",
+        "https://svmvirtodemo.blob.core.windows.net/wrkit-demo/google-pay.png"
+    )
 
-        val paymentMethods = arrayOf(
-            PaymentMethod(
-                "All",
-                "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQB_a30TT37soT-2Z6Sl3uy4Bk22vrpfhpdaOpJ212kq9A9U-fuYQ&s"
-            )
-        )
+    fun getAllOffers(): Array<Offer> {
 
         return arrayOf(
             Offer(
@@ -24,7 +29,7 @@ object InternalApiClient {
                 0.5f,
                 instoreUse = true,
                 onlineUse = true,
-                paymentMethods = paymentMethods
+                paymentMethods = arrayOf(visa, mastercard, googlePay)
             ),
             Offer(
                 "Starbucks",
@@ -35,7 +40,7 @@ object InternalApiClient {
                 0.8f,
                 instoreUse = true,
                 onlineUse = false,
-                paymentMethods = paymentMethods
+                paymentMethods = arrayOf(mastercard, googlePay)
             ),
             Offer(
                 "McDonalds",
@@ -46,7 +51,7 @@ object InternalApiClient {
                 1.2f,
                 instoreUse = true,
                 onlineUse = false,
-                paymentMethods = paymentMethods
+                paymentMethods = arrayOf(visa)
             )
         )
     }
@@ -55,21 +60,28 @@ object InternalApiClient {
         return arrayOf(
             Card(
                 "VISA Credit",
-                "https://svmvirtodemo.blob.core.windows.net/wrkit-demo/visa.png",
+                visa.logoUrl,
                 "5368",
-                "05/21"
+                "05/21",
+                arrayOf(
+                    Transaction("Tesco", "07:35", 23.99f, 0.72f, 3f, "Pending"),
+                    Transaction("Amazon", "Yesterday", 8.99f, 0f, 0f, ""),
+                    Transaction("McDonalds", "23/10", 10.48f, 1.05f, 10f, "Complete")
+                )
             ),
             Card(
                 "Mastercard Credit",
-                "https://svmvirtodemo.blob.core.windows.net/wrkit-demo/mastercard.png",
+                mastercard.logoUrl,
                 "3522",
-                "02/22"
+                "02/22",
+                arrayOf()
             ),
             Card(
                 "VISA Debit",
-                "https://svmvirtodemo.blob.core.windows.net/wrkit-demo/visa.png",
+                visa.logoUrl,
                 "4257",
-                "08/20"
+                "08/20",
+                arrayOf()
             )
         )
     }

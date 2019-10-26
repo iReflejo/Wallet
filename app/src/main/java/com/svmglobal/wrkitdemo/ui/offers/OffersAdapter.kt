@@ -4,7 +4,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
-import androidx.fragment.app.FragmentManager
+import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.svmglobal.wrkitdemo.R
 import com.svmglobal.wrkitdemo.databinding.OfferRowItemBinding
@@ -12,8 +12,7 @@ import com.svmglobal.wrkitdemo.models.Offer
 
 class OffersAdapter(
     private val dataset: Array<Offer>,
-    private val viewModel: OffersViewModel,
-    private val fragmentManager: FragmentManager
+    private val viewModel: OffersViewModel
 ) :
     RecyclerView.Adapter<OffersAdapter.OffersViewHolder>() {
 
@@ -31,11 +30,9 @@ class OffersAdapter(
 
         override fun onClick(view: View) {
             viewModel.select(binding.viewModel!!)
-            fragmentManager.beginTransaction().apply {
-                replace(R.id.fragment_container, OfferDetailsFragment())
-                addToBackStack(null)
-                commit()
-            }
+
+            val action = OffersFragmentDirections.actionNavigationOffersToOfferDetailsFragment()
+            view.findNavController().navigate(action)
         }
     }
 

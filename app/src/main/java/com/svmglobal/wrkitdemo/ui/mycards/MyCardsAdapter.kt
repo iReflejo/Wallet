@@ -4,7 +4,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
-import androidx.fragment.app.FragmentManager
+import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.svmglobal.wrkitdemo.R
 import com.svmglobal.wrkitdemo.databinding.MyCardRowItemBinding
@@ -12,8 +12,7 @@ import com.svmglobal.wrkitdemo.models.Card
 
 class MyCardsAdapter(
     private val dataset: Array<Card>,
-    private val viewModel: MyCardsViewModel,
-    private val fragmentManager: FragmentManager
+    private val viewModel: MyCardsViewModel
 ) :
     RecyclerView.Adapter<MyCardsAdapter.MyCardsViewHolder>() {
 
@@ -31,11 +30,8 @@ class MyCardsAdapter(
 
         override fun onClick(view: View) {
             viewModel.select(binding.viewModel!!)
-//            fragmentManager.beginTransaction().apply {
-//                replace(R.id.fragment_container, MyCardDetailsFragment())
-//                addToBackStack(null)
-//                commit()
-//            }
+            val action = MyCardsFragmentDirections.actionNavigationCardsToMyCardDetailsFragment()
+            view.findNavController().navigate(action)
         }
     }
 

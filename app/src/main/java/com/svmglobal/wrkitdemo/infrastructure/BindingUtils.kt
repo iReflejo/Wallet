@@ -4,6 +4,7 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.databinding.BindingAdapter
 import com.squareup.picasso.Picasso
+import java.text.NumberFormat
 
 @BindingAdapter("android:text")
 fun setFloat(view: TextView, value: Float) {
@@ -17,7 +18,7 @@ fun setFloat(view: TextView, value: Float) {
 
 @BindingAdapter("bind:imageUrl")
 fun loadImage(view: ImageView, imageUrl: String) {
-    if(!imageUrl.isNullOrEmpty()) {
+    if (imageUrl.isNotEmpty()) {
         Picasso
             .get()
             .load(imageUrl)
@@ -33,3 +34,15 @@ fun formatString(view: TextView, distance: Float) {
     }
     view.text = "$distance km"
 }
+
+@BindingAdapter("bind:currency")
+fun displayCurrency(view: TextView, value: Float) {
+    if ((value).isNaN()) {
+        view.text = ""
+        return
+    }
+
+    val formatter = NumberFormat.getCurrencyInstance()
+    view.text = formatter.format(value)
+}
+

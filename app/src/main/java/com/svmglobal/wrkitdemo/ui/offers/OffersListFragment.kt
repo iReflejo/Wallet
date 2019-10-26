@@ -27,8 +27,7 @@ class OffersListFragment : Fragment() {
         val viewManager = LinearLayoutManager(this.context)
         val viewAdapter = OffersAdapter(
             InternalApiClient.getAllOffers(),
-            viewModel,
-            fragmentManager!!
+            viewModel
         )
 
         root.findViewById<RecyclerView>(R.id.offers_view)?.apply {
