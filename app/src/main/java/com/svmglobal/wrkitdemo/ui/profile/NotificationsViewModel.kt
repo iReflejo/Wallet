@@ -1,4 +1,4 @@
-package com.svmglobal.wrkitdemo.ui.notifications
+package com.svmglobal.wrkitdemo.ui.profile
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData

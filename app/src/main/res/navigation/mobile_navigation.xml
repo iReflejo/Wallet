@@ -30,9 +30,9 @@
 
     <fragment
         android:id="@+id/navigation_account"
-        android:name="com.svmglobal.wrkitdemo.ui.notifications.NotificationsFragment"
+        android:name="com.svmglobal.wrkitdemo.ui.profile.NotificationsFragment"
         android:label="@string/title_account"
-        tools:layout="@layout/fragment_notifications" />
+        tools:layout="@layout/fragment_profile" />
     <fragment
         android:id="@+id/offerDetailsFragment"
         android:name="com.svmglobal.wrkitdemo.ui.offers.OfferDetailsFragment"
