@@ -30,9 +30,14 @@
 
     <fragment
         android:id="@+id/navigation_account"
-        android:name="com.svmglobal.wrkitdemo.ui.profile.NotificationsFragment"
+        android:name="com.svmglobal.wrkitdemo.ui.profile.ProfileFragment"
         android:label="@string/title_account"
-        tools:layout="@layout/fragment_profile" />
+        tools:layout="@layout/fragment_profile">
+        <action
+            android:id="@+id/action_navigation_account_to_cashOutFragment"
+            app:destination="@id/cashOutFragment"
+            app:popUpTo="@+id/navigation_account" />
+    </fragment>
     <fragment
         android:id="@+id/offerDetailsFragment"
         android:name="com.svmglobal.wrkitdemo.ui.offers.OfferDetailsFragment"
@@ -41,4 +46,9 @@
         android:id="@+id/myCardDetailsFragment"
         android:name="com.svmglobal.wrkitdemo.ui.mycards.MyCardDetailsFragment"
         android:label="MyCardDetailsFragment" />
+    <fragment
+        android:id="@+id/cashOutFragment"
+        android:name="com.svmglobal.wrkitdemo.ui.profile.CashOutFragment"
+        android:label="fragment_cash_out"
+        tools:layout="@layout/fragment_cash_out" />
 </navigation>
