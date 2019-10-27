@@ -37,6 +37,10 @@
             android:id="@+id/action_navigation_account_to_cashOutFragment"
             app:destination="@id/cashOutFragment"
             app:popUpTo="@+id/navigation_account" />
+        <action
+            android:id="@+id/action_navigation_account_to_notificationSettingsFragment"
+            app:destination="@id/notificationSettingsFragment"
+            app:popUpTo="@+id/navigation_account" />
     </fragment>
     <fragment
         android:id="@+id/offerDetailsFragment"
@@ -51,4 +55,9 @@
         android:name="com.svmglobal.wrkitdemo.ui.profile.CashOutFragment"
         android:label="fragment_cash_out"
         tools:layout="@layout/fragment_cash_out" />
+    <fragment
+        android:id="@+id/notificationSettingsFragment"
+        android:name="com.svmglobal.wrkitdemo.ui.profile.NotificationSettingsFragment"
+        android:label="fragment_notification_settings"
+        tools:layout="@layout/fragment_notification_settings" />
 </navigation>

@@ -28,6 +28,12 @@ class ProfileFragment : Fragment() {
             it.findNavController().navigate(action)
         }
 
+        root.findViewById<Button>(R.id.notification_settings).setOnClickListener {
+            val action =
+                ProfileFragmentDirections.actionNavigationAccountToNotificationSettingsFragment()
+            it.findNavController().navigate(action)
+        }
+
         return root
     }
 }
