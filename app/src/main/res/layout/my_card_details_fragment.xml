@@ -38,33 +38,40 @@
                     android:textAlignment="center"
                     android:textSize="24sp" />
 
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="18sp"
+                    android:text="@{viewModel.cardholderName}" />
+
                 <RelativeLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal">
 
                     <TextView
+                        android:layout_centerVertical="true"
                         android:id="@+id/expiry_label"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_centerVertical="true"
                         android:text="Expiry: " />
 
                     <TextView
+                        android:layout_centerVertical="true"
                         android:id="@+id/expiry_date"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_centerVertical="true"
-                        android:layout_toEndOf="@+id/expiry_label"
+                        android:layout_toRightOf="@+id/expiry_label"
                         android:text="@{viewModel.expiryDate}" />
-                </RelativeLayout>
 
-                <ImageView
-                    android:layout_width="50dp"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="end"
-                    android:scaleType="fitCenter"
-                    app:imageUrl="@{viewModel.brandImage}" />
+                    <ImageView
+                        android:layout_width="50dp"
+                        android:layout_height="wrap_content"
+                        android:scaleType="fitCenter"
+                        android:layout_alignParentEnd="true"
+                        app:imageUrl="@{viewModel.brandImage}" />
+                </RelativeLayout>
             </LinearLayout>
         </RelativeLayout>
 

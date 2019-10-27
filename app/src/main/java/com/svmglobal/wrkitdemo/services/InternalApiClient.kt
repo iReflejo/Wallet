@@ -63,6 +63,7 @@ object InternalApiClient {
                 visa.logoUrl,
                 "5368",
                 "05/21",
+                "John Smith",
                 arrayOf(
                     Transaction("Tesco", "07:35", 23.99f, 0.72f, 3f, "Pending"),
                     Transaction("Amazon", "Yesterday", 8.99f, 0f, 0f, ""),
@@ -74,6 +75,7 @@ object InternalApiClient {
                 mastercard.logoUrl,
                 "3522",
                 "02/22",
+                "John Smith",
                 arrayOf()
             ),
             Card(
@@ -81,6 +83,7 @@ object InternalApiClient {
                 visa.logoUrl,
                 "4257",
                 "08/20",
+                "John Smith",
                 arrayOf()
             )
         )

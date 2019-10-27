@@ -48,6 +48,11 @@
                     android:text="@{viewModel.lastFourDigits}" />
             </LinearLayout>
 
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="18sp"
+                android:text="@{viewModel.cardholderName}" />
 
             <RelativeLayout
                 android:layout_width="wrap_content"
@@ -68,14 +73,14 @@
                     android:layout_height="wrap_content"
                     android:layout_toRightOf="@+id/expiry_label"
                     android:text="@{viewModel.expiryDate}" />
-            </RelativeLayout>
 
-            <ImageView
-                android:layout_width="50dp"
-                android:layout_height="wrap_content"
-                android:scaleType="fitCenter"
-                android:layout_gravity="right"
-                app:imageUrl="@{viewModel.brandImage}" />
+                <ImageView
+                    android:layout_width="50dp"
+                    android:layout_height="wrap_content"
+                    android:scaleType="fitCenter"
+                    android:layout_alignParentEnd="true"
+                    app:imageUrl="@{viewModel.brandImage}" />
+            </RelativeLayout>
         </LinearLayout>
     </RelativeLayout>
 

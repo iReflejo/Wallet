@@ -7,6 +7,7 @@ data class Card(
     val brandImage: String,
     val lastFourDigits: String,
     val expiryDate: String,
+    val cardholderName: String,
     val transactions: Array<Transaction>
 ) : ViewModel()
 
