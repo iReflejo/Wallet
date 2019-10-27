@@ -1,5 +1,6 @@
 package com.svmglobal.wrkitdemo.infrastructure
 
+import android.view.View
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.databinding.BindingAdapter
@@ -44,5 +45,10 @@ fun displayCurrency(view: TextView, value: Float) {
 
     val formatter = NumberFormat.getCurrencyInstance()
     view.text = formatter.format(value)
+}
+
+@BindingAdapter("bind:showIfEmpty")
+fun <T> setVisibility(view: View, collection: Array<T>) {
+    view.visibility = if (collection.isNullOrEmpty()) View.VISIBLE else View.GONE
 }
 

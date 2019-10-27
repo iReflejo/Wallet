@@ -10,6 +10,7 @@ data class MyCardDetailsViewModel(
     val brandImage: String,
     val lastFourDigits: String,
     val expiryDate: String,
+    val cardholderName: String,
     val transactions: Array<Transaction>
 ) : ViewModel() {
     val maskedCardNumber = "xxxx xxxx xxxx ${lastFourDigits}"
@@ -19,6 +20,7 @@ data class MyCardDetailsViewModel(
         card.brandImage,
         card.lastFourDigits,
         card.expiryDate,
+        card.cardholderName,
         card.transactions
     )
 }

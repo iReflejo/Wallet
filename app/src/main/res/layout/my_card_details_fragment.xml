@@ -3,7 +3,6 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
-
         <variable
             name="viewModel"
             type="com.svmglobal.wrkitdemo.ui.mycards.MyCardDetailsViewModel" />
@@ -75,10 +74,23 @@
             </LinearLayout>
         </RelativeLayout>
 
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Start spending at supported stores to save!"
+            android:layout_marginTop="10dp"
+            android:paddingStart="20dp"
+            android:paddingEnd="20dp"
+            android:textSize="20sp"
+            android:textAlignment="center"
+            app:showIfEmpty="@{viewModel.transactions}" />
+
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/transaction_history"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:paddingStart="5dp"
+            android:paddingEnd="5dp"
             android:scrollbars="vertical" />
     </LinearLayout>
 </layout>
