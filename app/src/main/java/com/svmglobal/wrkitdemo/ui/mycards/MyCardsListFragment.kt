@@ -3,15 +3,16 @@ package com.svmglobal.wrkitdemo.ui.mycards
 import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProviders
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.getbouncer.cardscan.ScanActivity
+import cards.pay.paycardsrecognizer.sdk.Card
+import cards.pay.paycardsrecognizer.sdk.ScanCardIntent
 import com.google.android.material.chip.Chip
 import com.svmglobal.wrkitdemo.R
 import com.svmglobal.wrkitdemo.services.InternalApiClient
@@ -44,7 +45,8 @@ class MyCardsListFragment : Fragment() {
 
         val chip = root.findViewById<Chip>(R.id.add_new_card)
         chip.setOnClickListener {
-            ScanActivity.start(this.activity as Activity)
+            val intent = ScanCardIntent.Builder(this.context).build()
+            startActivityForResult(intent, 1445)
         }
 
         return root
@@ -52,21 +54,20 @@ class MyCardsListFragment : Fragment() {
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
+        if (requestCode == 1445) {
+            if (resultCode == Activity.RESULT_OK) {
+                val cardData = data!!.getParcelableExtra<Card>(ScanCardIntent.RESULT_PAYCARDS_CARD)
 
-        if (ScanActivity.isScanResult(requestCode)) {
-            if (resultCode == ScanActivity.RESULT_OK && data != null) {
-                val scanResult = ScanActivity.creditCardFromResult(data)
-
-                // at this point pass the info to your app's enter card flow
-                // this is how we do it in our example app
-//                val intent = Intent(this.context, EnterCard::class.java)
-//                intent.putExtra("card", scanResult)
-//                startActivity(intent)
-            } else if (resultCode == ScanActivity.RESULT_CANCELED) {
-                Log.d("CC Scan", "The user pressed the back button")
+                val card = AddCardViewModel(
+                    cardData!!.cardNumber,
+                    cardData.expirationDate,
+                    cardData.cardHolderName,
+                    ""
+                )
+                val action = MyCardsFragmentDirections.actionNavigationCardsToAddCardFragment(card)
+                findNavController().navigate(action)
             }
         }
     }
-
 
 }

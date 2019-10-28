@@ -6,13 +6,13 @@ import com.svmglobal.wrkitdemo.models.PaymentMethod
 import com.svmglobal.wrkitdemo.models.Transaction
 
 object InternalApiClient {
-    private val visa =
+    val visa =
         PaymentMethod("VISA", "https://svmvirtodemo.blob.core.windows.net/wrkit-demo/visa.png")
-    private val mastercard = PaymentMethod(
+    val mastercard = PaymentMethod(
         "Mastercard",
         "https://svmvirtodemo.blob.core.windows.net/wrkit-demo/mastercard.png"
     )
-    private val googlePay = PaymentMethod(
+    val googlePay = PaymentMethod(
         "Google Pay",
         "https://svmvirtodemo.blob.core.windows.net/wrkit-demo/google-pay.png"
     )

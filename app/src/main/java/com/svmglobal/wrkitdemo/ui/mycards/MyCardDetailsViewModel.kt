@@ -19,8 +19,8 @@ data class MyCardDetailsViewModel(
         card.cardBrand,
         card.brandImage,
         card.lastFourDigits,
-        card.expiryDate,
-        card.cardholderName,
+        card.expiryDate.toString(),
+        card.cardholderName.toString(),
         card.transactions
     )
 }

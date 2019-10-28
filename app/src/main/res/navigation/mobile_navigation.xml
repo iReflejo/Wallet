@@ -26,6 +26,10 @@
             app:destination="@id/myCardDetailsFragment"
             app:popUpTo="@id/navigation_cards"
             app:popUpToInclusive="false" />
+        <action
+            android:id="@+id/action_navigation_cards_to_addCardFragment"
+            app:destination="@id/addCardFragment"
+            app:popUpTo="@+id/navigation_cards" />
     </fragment>
 
     <fragment
@@ -60,4 +64,13 @@
         android:name="com.svmglobal.wrkitdemo.ui.profile.NotificationSettingsFragment"
         android:label="fragment_notification_settings"
         tools:layout="@layout/fragment_notification_settings" />
+    <fragment
+        android:id="@+id/addCardFragment"
+        android:name="com.svmglobal.wrkitdemo.ui.mycards.AddCardFragment"
+        android:label="AddCardFragment">
+        <argument
+            android:name="card"
+            app:argType="com.svmglobal.wrkitdemo.ui.mycards.AddCardViewModel"
+            app:nullable="true" />
+    </fragment>
 </navigation>

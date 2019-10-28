@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.svmglobal.wrkitdemo.ui.mycards.AddCardViewModel" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:paddingStart="30dp"
+        android:paddingTop="50dp"
+        android:paddingEnd="30dp">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginBottom="20dp">
+
+            <LinearLayout
+                android:id="@+id/card_container"
+                android:layout_width="300dp"
+                android:layout_height="160dp"
+                android:layout_centerInParent="true"
+                android:layout_margin="10dp"
+                android:background="@drawable/rounded_plain"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingTop="40dp"
+                    android:paddingBottom="10dp"
+                    android:text="@{viewModel.maskedCardNumber}"
+                    android:textAlignment="center"
+                    android:textSize="24sp" />
+
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@{viewModel.cardholderName}"
+                    android:textSize="18sp" />
+
+                <RelativeLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/expiry_label"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:text="Expiry: " />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_toRightOf="@+id/expiry_label"
+                        android:text="@{viewModel.expiryDate}" />
+
+                    <ImageView
+                        android:layout_width="50dp"
+                        android:layout_height="wrap_content"
+                        android:scaleType="fitCenter"
+                        android:layout_alignParentEnd="true"
+                        app:imageUrl="@{viewModel.brandImage}" />
+                </RelativeLayout>
+            </LinearLayout>
+        </RelativeLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/card_number_input"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Card Number"
+            android:padding="10dp"
+            app:hintTextAppearance="@style/TextInputLayout.HintText">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/card_number"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="number"
+                android:text="@{viewModel.cardNumber}" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/card_holder_name_input"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Cardholder Name"
+            android:padding="10dp"
+            app:hintTextAppearance="@style/TextInputLayout.HintText">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/card_holder_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="text"
+                android:text="@{viewModel.cardholderName}" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/expiry_date_input"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:hint="Expiry Date"
+                android:padding="10dp"
+                app:hintTextAppearance="@style/TextInputLayout.HintText">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/expiry_date"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="number"
+                    android:text="@{viewModel.expiryDate}" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/cvv_input"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:hint="CVV"
+                android:padding="10dp"
+                app:hintTextAppearance="@style/TextInputLayout.HintText">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/cvv"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="number"
+                    android:text="@{viewModel.cvv}" />
+            </com.google.android.material.textfield.TextInputLayout>
+        </LinearLayout>
+
+
+        <Button
+            android:layout_marginTop="10dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@color/colorPrimary"
+            android:layout_gravity="center_horizontal"
+            android:text="Save Card" />
+    </LinearLayout>
+</layout>
