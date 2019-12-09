@@ -26,6 +26,7 @@ class AddCardFragment : Fragment() {
         )
 
         binding.viewModel = args.card
+        binding.lifecycleOwner = this
         return binding.root
     }
 }

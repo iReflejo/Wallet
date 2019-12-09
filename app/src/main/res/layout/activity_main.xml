@@ -14,11 +14,11 @@
         app:layout_constraintRight_toRightOf="parent">
 
         <ImageView
-            android:id="@+id/wrkit_logo"
-            android:layout_width="wrap_content"
+            android:id="@+id/logo"
+            android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:scaleType="fitCenter"
-            android:src="@drawable/wrkit_logo" />
+            android:src="@drawable/circle_k_logo" />
 
     </LinearLayout>
 
